@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  micromes-service-rabbitmq:
+    container_name: micromes-rabbitmq
+    image: rabbitmq:3.13.6-management
+    restart: unless-stopped
+    ports:
+      - ${RMQ_PORT_UI:-15672}:15672
+      - ${RMQ_PORT_AMQP:-5672}:5672
+    networks:
+      - micromes-network-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RMQ_DEFAULT_PSW}
+    volumes:
+      - ./enabled_plugins:/etc/rabbitmq/enabled_plugins
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+
+networks:
+  micromes-network-rabbitmq:
+    name: micromes-network-rabbitmq

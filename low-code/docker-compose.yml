@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  node-red:
+    image: nodered/node-red:latest
+    container_name: micromes-node-red
+    ports:
+      - "3030:1880"
+    volumes:
+      - ./node-red:/data
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "2"
+    networks:
+      - micromes-network
+      - micromes-network-rabbitmq
+
+networks:
+  micromes-network:
+    external: true
+    driver: bridge
+
+  micromes-network-rabbitmq:
+    external:
+      name: micromes-network-rabbitmq
