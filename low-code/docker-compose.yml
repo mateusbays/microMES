@@ -16,6 +16,8 @@ services:
     networks:
       - micromes-network
       - micromes-network-rabbitmq
+      - micromes-network-broker
+      - micromes-network-influxdb
 
 networks:
   micromes-network:
@@ -25,3 +27,11 @@ networks:
   micromes-network-rabbitmq:
     external:
       name: micromes-network-rabbitmq
+
+  micromes-network-broker:
+    external:
+      name: micromes-network-broker
+
+  micromes-network-influxdb:
+    external:
+      name: micromes-network-influxdb

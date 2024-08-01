@@ -20,6 +20,9 @@
                     "pretty": true,
                     "json-view": true
                 }
+            },
+            "context": {
+                "flowRefresh": true
             }
         }
     }

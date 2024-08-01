@@ -8,14 +8,6 @@
         "env": []
     },
     {
-        "id": "ed8137a21de93977",
-        "type": "tab",
-        "label": "RabbitMQ Control",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "28d97d2e722592dd",
         "type": "tab",
         "label": "Resources Domain",
@@ -24,9 +16,41 @@
         "env": []
     },
     {
-        "id": "8a159a5f835158a2",
+        "id": "ed8137a21de93977",
         "type": "tab",
-        "label": "Listening to resource topics",
+        "label": "RabbitMQ Control",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9b906fc7f6c37e57",
+        "type": "tab",
+        "label": "Simulate cycle count",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3ef1681ad5353ba3",
+        "type": "tab",
+        "label": "Simulate status",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a84525eb36c38e5a",
+        "type": "tab",
+        "label": "Cycle Count Controller",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f3475de85ea09658",
+        "type": "tab",
+        "label": "Resource Status Controller",
         "disabled": false,
         "info": "",
         "env": []
@@ -52,6 +76,95 @@
         "h": 162
     },
     {
+        "id": "2e344c9cb8a33db9",
+        "type": "group",
+        "z": "ed8137a21de93977",
+        "name": "QUEUE EVENTS",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "2ea901b0c31bf5b1",
+            "fade4bffd9085dc9",
+            "3490781aa4afa717",
+            "9319fc3ce805a9a9",
+            "111bc3fd22208d66",
+            "cc9d3f851a261345"
+        ],
+        "x": 34,
+        "y": 279,
+        "w": 612,
+        "h": 262
+    },
+    {
+        "id": "d4e4b7b2ba58bc64",
+        "type": "group",
+        "z": "ed8137a21de93977",
+        "name": "BINDING AMQ.TOPICS TO QUEUE",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "da2ed99f528ed1cb",
+            "6d11526ac36ec449",
+            "7da1fb6c1fb63786",
+            "b40eec32c0561d93",
+            "5f327e29bc8c2e76",
+            "063742650c679327",
+            "cfc8a91c1fb2149c",
+            "2424f4c2e31b9c58",
+            "b3c4d46ced5b125a",
+            "281dd83d09932b11",
+            "e542bf05c348d4cb"
+        ],
+        "x": 34,
+        "y": 39,
+        "w": 1172,
+        "h": 182
+    },
+    {
+        "id": "cea2aee0ac4a0679",
+        "type": "group",
+        "z": "a84525eb36c38e5a",
+        "name": "Save Cycle Count By Resource",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "3e23e7e0cfaa9455",
+            "f8cf79a69fdbee81",
+            "62dbe67f095db505",
+            "a9ec1c903b5c79fc",
+            "adb039e0604995c7",
+            "112ef75c3237d1ee"
+        ],
+        "x": 154,
+        "y": 19,
+        "w": 652,
+        "h": 202
+    },
+    {
+        "id": "99efa440c83aba76",
+        "type": "group",
+        "z": "f3475de85ea09658",
+        "name": "Save resource-status",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "eeb0f3bee9b099b3",
+            "241f45d78036cc05",
+            "c93709b6c7796120",
+            "1914cc00d02fa98c",
+            "70ba93079105826c",
+            "32f9873f7ee48bcd"
+        ],
+        "x": 74,
+        "y": 39,
+        "w": 652,
+        "h": 202
+    },
+    {
         "id": "1648ed2bd697bd22",
         "type": "amqp-broker",
         "name": "micromes-rabbitmq",
@@ -62,62 +175,54 @@
         "credsFromSettings": false
     },
     {
-        "id": "84ecb88fce597a62",
+        "id": "mqtt_broker",
         "type": "mqtt-broker",
-        "name": "",
-        "broker": "localhost",
+        "name": "AMQP BROKER",
+        "broker": "micromes-rabbitmq",
         "port": "1883",
-        "clientid": "",
+        "clientid": "micromes-nodered",
         "autoConnect": true,
         "usetls": false,
+        "compatmode": false,
         "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
         "autoUnsubscribe": true,
         "birthTopic": "",
         "birthQos": "0",
-        "birthRetain": "false",
         "birthPayload": "",
         "birthMsg": {},
         "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
         "closePayload": "",
         "closeMsg": {},
         "willTopic": "",
         "willQos": "0",
-        "willRetain": "false",
         "willPayload": "",
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
     },
     {
-        "id": "mqtt_broker",
-        "type": "mqtt-broker",
-        "name": "MQTT Broker",
-        "broker": "localhost",
-        "port": "1883",
-        "clientid": "",
+        "id": "cc11d4fbaf292399",
+        "type": "influxdb",
+        "hostname": "micromes-influxdb",
+        "port": "8086",
+        "protocol": "http",
+        "database": "micromes",
+        "name": "influxDB",
         "usetls": false,
-        "compatmode": false,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://192.168.176.2:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
     },
     {
         "id": "7d40e44b98a7bf1f",
         "type": "function",
         "z": "85dda8894b60830e",
         "name": "Processar Dados / Save to Global",
-        "func": "const csvData = msg.payload; // O conteúdo do CSV como uma string\n\n// Dividir o conteúdo em seções\nconst sections = csvData.trim().split('\\n\\n'); // Seções são separadas por duas quebras de linha\n\n// Estrutura para armazenar os dados\nconst result = {\n    \"productionOrders\": [],\n    \"roadmaps\": [],\n    \"operations\": [],\n    \"resources\": [],\n    \"items\": []\n};\n\n// Função para processar uma linha de CSV e converter em objeto\nfunction parseCSVLine(line, headers) {\n    const values = line.split(',').map(value => value.trim()); // Trim para remover espaços extras\n    const obj = {};\n    headers.forEach((header, index) => {\n        obj[header] = values[index] || '';\n    });\n    return obj;\n}\n\n// Processar cada seção\nsections.forEach((section, index) => {\n    // Remove a marcação de seção (por exemplo, '# Ordem de Produção')\n    const cleanedSection = section.replace(/^# .*/, '').trim();\n    const lines = cleanedSection.split('\\n').map(line => line.trim()); // Split e trim das linhas\n\n    if (lines.length === 0) return;\n\n    const headerLine = lines[0]; // Primeira linha como cabeçalhos\n    const dataLines = lines.slice(1); // Linhas de dados\n\n    let sectionName = '';\n    switch (headerLine) {\n        case 'CÓDIGO,PRODUTO,QUANTIDADE,DATA DE INÍCIO,DATA DE FIM':\n            sectionName = 'productionOrders';\n            break;\n        case 'CÓDIGO,OPERAÇÃO,RECURSO':\n            sectionName = 'roadmaps';\n            break;\n        case 'CÓDIGO,DESCRIÇÃO,TEMPO DE CICLO (s),FATOR DE PRODUÇÃO':\n            sectionName = 'operations';\n            break;\n        case 'CÓDIGO,NOME,DISPONIBILIDADE (s)':\n            sectionName = 'resources';\n            break;\n        case 'CÓDIGO,NOME,DESCRIÇÃO,TIPO,UNIDADE DE MEDIDA':\n            sectionName = 'items';\n            break;\n        default:\n            sectionName = ''; // Se não for uma seção conhecida\n    }\n\n    if (sectionName) {\n        const headers = headerLine.split(',').map(header => header.trim()); // Trim dos cabeçalhos\n        const jsonData = dataLines.map(line => parseCSVLine(line, headers)).filter(data => Object.keys(data).length > 0);\n\n        // Adicionando logs para verificar dados convertidos\n        node.warn(`Dados convertidos para ${sectionName}: ${JSON.stringify(jsonData)}`);\n\n        result[sectionName] = jsonData;\n    }\n});\n\nglobal.set('mesData', result);\n\nreturn msg;\n",
+        "func": "const csvData = msg.payload.trim(); // O conteúdo do CSV como uma string\n\n// Dividir o conteúdo em linhas e remover espaços extras\nconst lines = csvData.split('\\n').map(line => line.trim());\n\n// Estrutura para armazenar os dados\nconst result = {\n    \"productionOrders\": [],\n    \"roadmaps\": [],\n    \"operations\": [],\n    \"resources\": [],\n    \"items\": []\n};\n\n// Variáveis de controle\nlet currentSection = '';\nlet headers = [];\n\n// Função para processar uma linha de CSV e converter em objeto\nfunction parseCSVLine(line, headers) {\n    const values = line.split(',').map(value => value.trim());\n    const obj = {};\n    headers.forEach((header, index) => {\n        obj[header] = values[index] || '';\n    });\n    return obj;\n}\n\n// Processar cada linha do CSV\nlines.forEach((line) => {\n    if (line.startsWith('#')) {\n        // Determinar a seção atual com base no cabeçalho\n        if (line.includes('# productionOrders')) {\n            currentSection = 'productionOrders';\n        } else if (line.includes('# roadmaps')) {\n            currentSection = 'roadmaps';\n        } else if (line.includes('# operations')) {\n            currentSection = 'operations';\n        } else if (line.includes('# resources')) {\n            currentSection = 'resources';\n        } else if (line.includes('# items')) {\n            currentSection = 'items';\n        }\n        headers = []; // Reiniciar cabeçalhos para a nova seção\n    } else if (currentSection && line) {\n        // Armazenar cabeçalhos e dados da seção atual\n        if (headers.length === 0) {\n            headers = line.split(',').map(header => header.trim());\n        } else {\n            const data = parseCSVLine(line, headers);\n            if (Object.keys(data).some(key => data[key])) { // Filtrar objetos vazios\n                result[currentSection].push(data);\n            }\n        }\n    }\n});\n\nglobal.set('mesData', result);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -208,7 +313,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 150,
-        "y": 220,
+        "y": 240,
         "wires": [
             [
                 "e4eae28fbf15e181"
@@ -228,7 +333,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 220,
+        "y": 240,
         "wires": [
             [
                 "aa0d1961c891bdb2"
@@ -243,7 +348,7 @@
         "statusCode": "",
         "headers": {},
         "x": 570,
-        "y": 220,
+        "y": 240,
         "wires": []
     },
     {
@@ -256,7 +361,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 140,
-        "y": 300,
+        "y": 320,
         "wires": [
             [
                 "131d551574321ce7"
@@ -276,7 +381,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 300,
+        "y": 320,
         "wires": [
             [
                 "f07bdea6ef696834"
@@ -291,7 +396,7 @@
         "statusCode": "",
         "headers": {},
         "x": 570,
-        "y": 300,
+        "y": 320,
         "wires": []
     },
     {
@@ -304,7 +409,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 150,
-        "y": 380,
+        "y": 400,
         "wires": [
             [
                 "62d6fea6efc7de07"
@@ -324,7 +429,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 380,
+        "y": 400,
         "wires": [
             [
                 "0ca9214c8ee3f8f0"
@@ -339,7 +444,7 @@
         "statusCode": "",
         "headers": {},
         "x": 570,
-        "y": 380,
+        "y": 400,
         "wires": []
     },
     {
@@ -352,7 +457,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 140,
-        "y": 460,
+        "y": 480,
         "wires": [
             [
                 "2f5993b7355af55e"
@@ -372,7 +477,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 460,
+        "y": 480,
         "wires": [
             [
                 "947c189148078db1"
@@ -387,7 +492,7 @@
         "statusCode": "",
         "headers": {},
         "x": 570,
-        "y": 460,
+        "y": 480,
         "wires": []
     },
     {
@@ -440,118 +545,6 @@
         ]
     },
     {
-        "id": "2ea901b0c31bf5b1",
-        "type": "amqp-in",
-        "z": "ed8137a21de93977",
-        "name": "",
-        "broker": "1648ed2bd697bd22",
-        "prefetch": 0,
-        "reconnectOnError": false,
-        "noAck": true,
-        "exchangeName": "resources-signal",
-        "exchangeType": "topic",
-        "exchangeRoutingKey": "resource.*.cycle-count",
-        "exchangeDurable": true,
-        "queueName": "resource-cycle-count",
-        "queueType": "classic",
-        "queueExclusive": false,
-        "queueDurable": true,
-        "queueAutoDelete": false,
-        "headers": "{}",
-        "x": 240,
-        "y": 80,
-        "wires": [
-            [
-                "cc9d3f851a261345",
-                "9319fc3ce805a9a9"
-            ]
-        ]
-    },
-    {
-        "id": "cc9d3f851a261345",
-        "type": "debug",
-        "z": "ed8137a21de93977",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "fade4bffd9085dc9",
-        "type": "amqp-in",
-        "z": "ed8137a21de93977",
-        "name": "",
-        "broker": "1648ed2bd697bd22",
-        "prefetch": 0,
-        "reconnectOnError": false,
-        "noAck": true,
-        "exchangeName": "resources-signal",
-        "exchangeType": "topic",
-        "exchangeRoutingKey": "resource.*.status",
-        "exchangeDurable": true,
-        "queueName": "resource-cycle-count",
-        "queueType": "classic",
-        "queueExclusive": false,
-        "queueDurable": true,
-        "queueAutoDelete": false,
-        "headers": "{}",
-        "x": 220,
-        "y": 180,
-        "wires": [
-            [
-                "3490781aa4afa717",
-                "111bc3fd22208d66"
-            ]
-        ]
-    },
-    {
-        "id": "3490781aa4afa717",
-        "type": "debug",
-        "z": "ed8137a21de93977",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "9319fc3ce805a9a9",
-        "type": "link out",
-        "z": "ed8137a21de93977",
-        "name": "event-resource-cycle-count",
-        "mode": "link",
-        "links": [],
-        "x": 565,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "111bc3fd22208d66",
-        "type": "link out",
-        "z": "ed8137a21de93977",
-        "name": "event-resource-status",
-        "mode": "link",
-        "links": [],
-        "x": 565,
-        "y": 220,
-        "wires": []
-    },
-    {
         "id": "875811589b1300d2",
         "type": "link in",
         "z": "28d97d2e722592dd",
@@ -574,7 +567,7 @@
         "z": "28d97d2e722592dd",
         "g": "37947f608a5e40cb",
         "name": "function 5",
-        "func": "const mesData = global.get('mesData') || {};\nconst resources = mesData.resources || [];\n\nconst updatedResources = resources.map(resource => {\n    return {\n        ...resource,\n        topics: {\n            cycleCount: `/resource/${resource.code}/cycle-count`,\n            status: `/resource/${resource.code}/status`\n        }\n    };\n});\n\n\nmesData.resources = updatedResources;\n\n\nglobal.set('mesData', mesData);\n\nreturn msg; ",
+        "func": "const mesData = global.get('mesData') || {};\nconst resources = mesData.resources || [];\n\nconst resourcesWithTopics = resources.map(resource => {\n    return {\n        ...resource,\n        topics: {\n            cycleCount: `resource.${resource.code}.cycle-count`,\n            status: `resource.${resource.code}.status`\n        }\n    };\n});\n\n\nmesData.resources = resourcesWithTopics;\n\n\nglobal.set('mesData', mesData);\nmsg.payload = resourcesWithTopics;\n\nreturn msg; ",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -615,7 +608,8 @@
         "name": "event-create-resource-topics",
         "mode": "link",
         "links": [
-            "ba3975bceaf54aec"
+            "ba3975bceaf54aec",
+            "da2ed99f528ed1cb"
         ],
         "x": 595,
         "y": 160,
@@ -643,54 +637,1239 @@
         ]
     },
     {
-        "id": "ba3975bceaf54aec",
-        "type": "link in",
-        "z": "8a159a5f835158a2",
-        "name": "link in 2",
-        "links": [
-            "7cef92a7c7eeab0b"
-        ],
-        "x": 195,
-        "y": 60,
+        "id": "2ea901b0c31bf5b1",
+        "type": "amqp-in",
+        "z": "ed8137a21de93977",
+        "g": "2e344c9cb8a33db9",
+        "name": "cycle count",
+        "broker": "1648ed2bd697bd22",
+        "prefetch": 0,
+        "reconnectOnError": true,
+        "noAck": true,
+        "exchangeName": "",
+        "exchangeType": "topic",
+        "exchangeRoutingKey": "",
+        "exchangeDurable": true,
+        "queueName": "resource-cycle-count",
+        "queueType": "classic",
+        "queueExclusive": false,
+        "queueDurable": true,
+        "queueAutoDelete": false,
+        "headers": "{}",
+        "x": 130,
+        "y": 320,
         "wires": [
             [
-                "function_node"
+                "9319fc3ce805a9a9",
+                "cc9d3f851a261345"
             ]
         ]
     },
     {
-        "id": "debug_node",
+        "id": "fade4bffd9085dc9",
+        "type": "amqp-in",
+        "z": "ed8137a21de93977",
+        "g": "2e344c9cb8a33db9",
+        "name": "status",
+        "broker": "1648ed2bd697bd22",
+        "prefetch": 0,
+        "reconnectOnError": false,
+        "noAck": true,
+        "exchangeName": "",
+        "exchangeType": "topic",
+        "exchangeRoutingKey": "",
+        "exchangeDurable": true,
+        "queueName": "resource-status",
+        "queueType": "classic",
+        "queueExclusive": false,
+        "queueDurable": true,
+        "queueAutoDelete": false,
+        "headers": "{}",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "3490781aa4afa717",
+                "111bc3fd22208d66"
+            ]
+        ]
+    },
+    {
+        "id": "3490781aa4afa717",
         "type": "debug",
-        "z": "8a159a5f835158a2",
-        "name": "Debug",
-        "active": true,
+        "z": "ed8137a21de93977",
+        "g": "2e344c9cb8a33db9",
+        "name": "debug 3",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 570,
-        "y": 60,
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "function_node",
+        "id": "9319fc3ce805a9a9",
+        "type": "link out",
+        "z": "ed8137a21de93977",
+        "g": "2e344c9cb8a33db9",
+        "name": "event-resource-cycle-count",
+        "mode": "link",
+        "links": [
+            "f8cf79a69fdbee81",
+            "241f45d78036cc05"
+        ],
+        "x": 225,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "111bc3fd22208d66",
+        "type": "link out",
+        "z": "ed8137a21de93977",
+        "g": "2e344c9cb8a33db9",
+        "name": "event-resource-status",
+        "mode": "link",
+        "links": [],
+        "x": 225,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "da2ed99f528ed1cb",
+        "type": "link in",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "link in 2",
+        "links": [
+            "7cef92a7c7eeab0b"
+        ],
+        "x": 75,
+        "y": 100,
+        "wires": [
+            [
+                "6d11526ac36ec449"
+            ]
+        ]
+    },
+    {
+        "id": "6d11526ac36ec449",
         "type": "function",
-        "z": "8a159a5f835158a2",
-        "name": "Define Topics",
-        "func": "const resources = global.get('mesData').resources;\n\nconst topics = resources.flatMap((resource) => { \n    return Object.values(resource.topics);\n})\n\nflow.set('topics', topics);\n",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "groupTopicsToBind",
+        "func": "const resources = global.get('mesData').resources;\n\nconst topicsToBind = resources.flatMap((resource) => Object.values(resource.topics));\n\nmsg.payload = topicsToBind\n\nreturn msg;",
         "outputs": 1,
-        "timeout": "",
+        "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 60,
+        "x": 210,
+        "y": 100,
         "wires": [
             [
-                "debug_node"
+                "b40eec32c0561d93"
             ]
         ]
+    },
+    {
+        "id": "7da1fb6c1fb63786",
+        "type": "http request",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "micromes-rabbitmq:15672/api/bindings/%2F/e/amq.topic/q/resource-cycle-count",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "basic",
+        "senderr": false,
+        "headers": [],
+        "x": 940,
+        "y": 80,
+        "wires": [
+            [
+                "e542bf05c348d4cb"
+            ]
+        ]
+    },
+    {
+        "id": "b40eec32c0561d93",
+        "type": "split",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "5f327e29bc8c2e76"
+            ]
+        ]
+    },
+    {
+        "id": "5f327e29bc8c2e76",
+        "type": "switch",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "cycle-count",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "status",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "2424f4c2e31b9c58"
+            ],
+            [
+                "cfc8a91c1fb2149c",
+                "b3c4d46ced5b125a"
+            ]
+        ]
+    },
+    {
+        "id": "063742650c679327",
+        "type": "http request",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "micromes-rabbitmq:15672/api/bindings/%2F/e/amq.topic/q/resource-status",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "basic",
+        "senderr": false,
+        "headers": [],
+        "x": 940,
+        "y": 120,
+        "wires": [
+            [
+                "281dd83d09932b11"
+            ]
+        ]
+    },
+    {
+        "id": "cfc8a91c1fb2149c",
+        "type": "debug",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2424f4c2e31b9c58",
+        "type": "function",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "create payload",
+        "func": "const routingKey = msg.payload;\n\nmsg.payload = {\n    \"routing_key\": routingKey,\n    \"arguments\": {}\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 80,
+        "wires": [
+            [
+                "7da1fb6c1fb63786"
+            ]
+        ]
+    },
+    {
+        "id": "b3c4d46ced5b125a",
+        "type": "function",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "create payload",
+        "func": "const routingKey = msg.payload;\n\nmsg.payload = {\n    \"routing_key\": routingKey,\n    \"arguments\": {}\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 120,
+        "wires": [
+            [
+                "063742650c679327"
+            ]
+        ]
+    },
+    {
+        "id": "281dd83d09932b11",
+        "type": "debug",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e542bf05c348d4cb",
+        "type": "debug",
+        "z": "ed8137a21de93977",
+        "g": "d4e4b7b2ba58bc64",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "cc9d3f851a261345",
+        "type": "debug",
+        "z": "ed8137a21de93977",
+        "g": "2e344c9cb8a33db9",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2b7cca9fc0178550",
+        "type": "inject",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 80,
+        "wires": [
+            [
+                "c8522454896295c6"
+            ]
+        ]
+    },
+    {
+        "id": "0c12ac22c9a292d8",
+        "type": "inject",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 160,
+        "wires": [
+            [
+                "78f4cd1308f5d206"
+            ]
+        ]
+    },
+    {
+        "id": "734f979d8fb35da6",
+        "type": "inject",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 260,
+        "wires": [
+            [
+                "e14f215752b27741"
+            ]
+        ]
+    },
+    {
+        "id": "2c46dedc8c746cfc",
+        "type": "inject",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "58190ab715343bbf"
+            ]
+        ]
+    },
+    {
+        "id": "ef63622c77ee84b5",
+        "type": "inject",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "15243d057958e531"
+            ]
+        ]
+    },
+    {
+        "id": "c8522454896295c6",
+        "type": "function",
+        "z": "9b906fc7f6c37e57",
+        "name": "function 6",
+        "func": "msg.payload = {\n    value: 1,\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 80,
+        "wires": [
+            [
+                "61783797f9a4f25f"
+            ]
+        ]
+    },
+    {
+        "id": "78f4cd1308f5d206",
+        "type": "function",
+        "z": "9b906fc7f6c37e57",
+        "name": "function 7",
+        "func": "msg.payload = {\n    value: 1,\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "096f75859cad0543"
+            ]
+        ]
+    },
+    {
+        "id": "e14f215752b27741",
+        "type": "function",
+        "z": "9b906fc7f6c37e57",
+        "name": "function 8",
+        "func": "msg.payload = {\n    value: 1,\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "6bf42b4cb14e1e9e"
+            ]
+        ]
+    },
+    {
+        "id": "58190ab715343bbf",
+        "type": "function",
+        "z": "9b906fc7f6c37e57",
+        "name": "function 9",
+        "func": "msg.payload = {\n    value: 1,\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 360,
+        "wires": [
+            [
+                "51ff9ecc26a55c2a"
+            ]
+        ]
+    },
+    {
+        "id": "15243d057958e531",
+        "type": "function",
+        "z": "9b906fc7f6c37e57",
+        "name": "function 10",
+        "func": "msg.payload = {\n    value: 1,\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 440,
+        "wires": [
+            [
+                "b115ae2cd479ceb2"
+            ]
+        ]
+    },
+    {
+        "id": "b115ae2cd479ceb2",
+        "type": "mqtt out",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "topic": "resource/EM/cycle-count",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 770,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "51ff9ecc26a55c2a",
+        "type": "mqtt out",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "topic": "resource/MO/cycle-count",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "6bf42b4cb14e1e9e",
+        "type": "mqtt out",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "topic": "resource/MI/cycle-count",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 770,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "096f75859cad0543",
+        "type": "mqtt out",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "topic": "resource/MR/cycle-count",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 770,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "61783797f9a4f25f",
+        "type": "mqtt out",
+        "z": "9b906fc7f6c37e57",
+        "name": "",
+        "topic": "resource/MM/cycle-count",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 770,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "64ed7a7cbce37407",
+        "type": "inject",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 80,
+        "wires": [
+            [
+                "6f1e7edc2b841206"
+            ]
+        ]
+    },
+    {
+        "id": "b90fd44ea0fac58c",
+        "type": "inject",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 160,
+        "wires": [
+            [
+                "567fef4eea70ba40"
+            ]
+        ]
+    },
+    {
+        "id": "d6c9c1c8ccd44b28",
+        "type": "inject",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 260,
+        "wires": [
+            [
+                "a3ae0943e7888664"
+            ]
+        ]
+    },
+    {
+        "id": "91ee77ceab90f389",
+        "type": "inject",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "e0cff4627157304d"
+            ]
+        ]
+    },
+    {
+        "id": "274053a5b511e63d",
+        "type": "inject",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "80eeb9d85cd8306e"
+            ]
+        ]
+    },
+    {
+        "id": "6f1e7edc2b841206",
+        "type": "function",
+        "z": "3ef1681ad5353ba3",
+        "name": "function 11",
+        "func": "msg.payload = {\n    value: \"WORKING\",\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 80,
+        "wires": [
+            [
+                "7038b64363b32df9"
+            ]
+        ]
+    },
+    {
+        "id": "567fef4eea70ba40",
+        "type": "function",
+        "z": "3ef1681ad5353ba3",
+        "name": "function 12",
+        "func": "msg.payload = {\n    value: \"WORKING\",\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "c09517a438ac3583"
+            ]
+        ]
+    },
+    {
+        "id": "a3ae0943e7888664",
+        "type": "function",
+        "z": "3ef1681ad5353ba3",
+        "name": "function 13",
+        "func": "msg.payload = {\n    value: \"WORKING\",\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "2551b1f1c5733da3"
+            ]
+        ]
+    },
+    {
+        "id": "e0cff4627157304d",
+        "type": "function",
+        "z": "3ef1681ad5353ba3",
+        "name": "function 14",
+        "func": "msg.payload = {\n    value: \"WORKING\",\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 360,
+        "wires": [
+            [
+                "54e64a7a65f7ef2e"
+            ]
+        ]
+    },
+    {
+        "id": "80eeb9d85cd8306e",
+        "type": "function",
+        "z": "3ef1681ad5353ba3",
+        "name": "function 15",
+        "func": "msg.payload = {\n    value: \"WORKING\",\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 440,
+        "wires": [
+            [
+                "fe395c5ae2da5a07"
+            ]
+        ]
+    },
+    {
+        "id": "fe395c5ae2da5a07",
+        "type": "mqtt out",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "topic": "resource/EM/status",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 750,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "54e64a7a65f7ef2e",
+        "type": "mqtt out",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "topic": "resource/MO/status",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 750,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2551b1f1c5733da3",
+        "type": "mqtt out",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "topic": "resource/MI/status",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 750,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c09517a438ac3583",
+        "type": "mqtt out",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "topic": "resource/MR/status",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 750,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7038b64363b32df9",
+        "type": "mqtt out",
+        "z": "3ef1681ad5353ba3",
+        "name": "",
+        "topic": "resource/MM/status",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 750,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "3e23e7e0cfaa9455",
+        "type": "influxdb out",
+        "z": "a84525eb36c38e5a",
+        "g": "cea2aee0ac4a0679",
+        "influxdb": "cc11d4fbaf292399",
+        "name": "INFLUX",
+        "measurement": "cycle_count",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "micromes",
+        "bucket": "micromes",
+        "x": 700,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f8cf79a69fdbee81",
+        "type": "link in",
+        "z": "a84525eb36c38e5a",
+        "g": "cea2aee0ac4a0679",
+        "name": "link in 3",
+        "links": [
+            "9319fc3ce805a9a9"
+        ],
+        "x": 195,
+        "y": 100,
+        "wires": [
+            [
+                "62dbe67f095db505",
+                "112ef75c3237d1ee"
+            ]
+        ]
+    },
+    {
+        "id": "62dbe67f095db505",
+        "type": "function",
+        "z": "a84525eb36c38e5a",
+        "g": "cea2aee0ac4a0679",
+        "name": "saveCycleCountByResource",
+        "func": "const resourceCode = msg.fields.routingKey.split('.')[1];\n\nconst value = msg.payload.value || 0;\n\nmsg.payload = [\n    {\n        \"cycle_count\": value,\n    },\n    {\n        \"resource\": resourceCode,\n    }\n];\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "3e23e7e0cfaa9455",
+                "a9ec1c903b5c79fc"
+            ]
+        ]
+    },
+    {
+        "id": "a9ec1c903b5c79fc",
+        "type": "debug",
+        "z": "a84525eb36c38e5a",
+        "g": "cea2aee0ac4a0679",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "adb039e0604995c7",
+        "type": "comment",
+        "z": "a84525eb36c38e5a",
+        "g": "cea2aee0ac4a0679",
+        "name": "API Token",
+        "info": "P-qlomUIodqDPdbcXhnjrx1nEO2zEjitodWWej-_DaBRHei3Wot4nSGDtut6t89xrldZiKWiVV23QZfg1lHjFQ==",
+        "x": 700,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "112ef75c3237d1ee",
+        "type": "debug",
+        "z": "a84525eb36c38e5a",
+        "g": "cea2aee0ac4a0679",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "eeb0f3bee9b099b3",
+        "type": "influxdb out",
+        "z": "f3475de85ea09658",
+        "g": "99efa440c83aba76",
+        "influxdb": "cc11d4fbaf292399",
+        "name": "INFLUX",
+        "measurement": "status",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "micromes",
+        "bucket": "micromes",
+        "x": 620,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "241f45d78036cc05",
+        "type": "link in",
+        "z": "f3475de85ea09658",
+        "g": "99efa440c83aba76",
+        "name": "link in 4",
+        "links": [
+            "9319fc3ce805a9a9"
+        ],
+        "x": 115,
+        "y": 120,
+        "wires": [
+            [
+                "c93709b6c7796120",
+                "32f9873f7ee48bcd"
+            ]
+        ]
+    },
+    {
+        "id": "c93709b6c7796120",
+        "type": "function",
+        "z": "f3475de85ea09658",
+        "g": "99efa440c83aba76",
+        "name": "saveResourceStatus",
+        "func": "const resourceCode = msg.fields.routingKey.split('.')[1];\n\nconst value = msg.payload.value || 'UNALLOCATED';\n\nmsg.payload = [\n    {\n        \"status\": value,\n    },\n    {\n        \"resource\": resourceCode,\n    }\n];\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "eeb0f3bee9b099b3",
+                "1914cc00d02fa98c"
+            ]
+        ]
+    },
+    {
+        "id": "1914cc00d02fa98c",
+        "type": "debug",
+        "z": "f3475de85ea09658",
+        "g": "99efa440c83aba76",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "70ba93079105826c",
+        "type": "comment",
+        "z": "f3475de85ea09658",
+        "g": "99efa440c83aba76",
+        "name": "API Token",
+        "info": "P-qlomUIodqDPdbcXhnjrx1nEO2zEjitodWWej-_DaBRHei3Wot4nSGDtut6t89xrldZiKWiVV23QZfg1lHjFQ==",
+        "x": 620,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "32f9873f7ee48bcd",
+        "type": "debug",
+        "z": "f3475de85ea09658",
+        "g": "99efa440c83aba76",
+        "name": "debug 12",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 200,
+        "wires": []
     }
 ]

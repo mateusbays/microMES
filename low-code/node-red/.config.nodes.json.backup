@@ -618,24 +618,5 @@
                 "file": "/data/node_modules/@mnn-o/node-red-rabbitmq/build/src/nodes/amqp-in-manual-ack.js"
             }
         }
-    },
-    "node-red-contrib-mqtt-dynamicsub": {
-        "name": "node-red-contrib-mqtt-dynamicsub",
-        "version": "0.0.9",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "mqtt-in-dynamicsub": {
-                "name": "mqtt-in-dynamicsub",
-                "types": [
-                    "mqtt-in-dynamicsub"
-                ],
-                "enabled": false,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-mqtt-dynamicsub",
-                "file": "/data/node_modules/node-red-contrib-mqtt-dynamicsub/mqtt.js"
-            }
-        }
     }
 }

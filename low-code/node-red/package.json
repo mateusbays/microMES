@@ -8,6 +8,7 @@
         "@mnn-o/node-red-rabbitmq": "~1.0.2",
         "node-red-contrib-alasql": "~2.0.1",
         "node-red-contrib-excel": "~0.0.3",
+        "node-red-contrib-influxdb": "~0.7.0",
         "node-red-contrib-spreadsheet-in": "~0.7.2",
         "node-red-contrib-xlsx-to-json": "~1.0.0",
         "xlsx": "^0.18.5"
