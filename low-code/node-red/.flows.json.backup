@@ -2,7 +2,7 @@
     {
         "id": "85dda8894b60830e",
         "type": "tab",
-        "label": "Endpoints",
+        "label": "Base Controller",
         "disabled": false,
         "info": "",
         "env": []
