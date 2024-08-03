@@ -141,7 +141,7 @@
         "x": 154,
         "y": 19,
         "w": 652,
-        "h": 202
+        "h": 182
     },
     {
         "id": "99efa440c83aba76",
@@ -156,13 +156,32 @@
             "241f45d78036cc05",
             "c93709b6c7796120",
             "1914cc00d02fa98c",
-            "70ba93079105826c",
-            "32f9873f7ee48bcd"
+            "70ba93079105826c"
         ],
-        "x": 74,
-        "y": 39,
-        "w": 652,
-        "h": 202
+        "x": 134,
+        "y": 19,
+        "w": 692,
+        "h": 162
+    },
+    {
+        "id": "fa719d5b8edb21f8",
+        "type": "group",
+        "z": "f3475de85ea09658",
+        "name": "Create Resource Status by Cycle Count",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "000c4615e6f9f500",
+            "4e96e4d4f03a1561",
+            "a1c4894419558aaa",
+            "9fc0aed15a42eaf9",
+            "7fb70ec3ca623f8e"
+        ],
+        "x": 134,
+        "y": 259,
+        "w": 732,
+        "h": 122
     },
     {
         "id": "1648ed2bd697bd22",
@@ -721,7 +740,9 @@
         "mode": "link",
         "links": [
             "f8cf79a69fdbee81",
-            "241f45d78036cc05"
+            "5b773658186cd0a8",
+            "1cc2ebf690814359",
+            "000c4615e6f9f500"
         ],
         "x": 225,
         "y": 380,
@@ -734,7 +755,9 @@
         "g": "2e344c9cb8a33db9",
         "name": "event-resource-status",
         "mode": "link",
-        "links": [],
+        "links": [
+            "241f45d78036cc05"
+        ],
         "x": 225,
         "y": 500,
         "wires": []
@@ -1765,7 +1788,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 380,
-        "y": 180,
+        "y": 140,
         "wires": []
     },
     {
@@ -1783,8 +1806,8 @@
         "retentionPolicyV18Flux": "",
         "org": "micromes",
         "bucket": "micromes",
-        "x": 620,
-        "y": 120,
+        "x": 680,
+        "y": 100,
         "wires": []
     },
     {
@@ -1792,16 +1815,15 @@
         "type": "link in",
         "z": "f3475de85ea09658",
         "g": "99efa440c83aba76",
-        "name": "link in 4",
+        "name": "event-resource-status",
         "links": [
-            "9319fc3ce805a9a9"
+            "111bc3fd22208d66"
         ],
-        "x": 115,
-        "y": 120,
+        "x": 175,
+        "y": 100,
         "wires": [
             [
-                "c93709b6c7796120",
-                "32f9873f7ee48bcd"
+                "c93709b6c7796120"
             ]
         ]
     },
@@ -1818,8 +1840,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 120,
+        "x": 400,
+        "y": 100,
         "wires": [
             [
                 "eeb0f3bee9b099b3",
@@ -1840,8 +1862,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 180,
+        "x": 680,
+        "y": 140,
         "wires": []
     },
     {
@@ -1849,17 +1871,75 @@
         "type": "comment",
         "z": "f3475de85ea09658",
         "g": "99efa440c83aba76",
-        "name": "API Token",
+        "name": "INFLUX API Token",
         "info": "P-qlomUIodqDPdbcXhnjrx1nEO2zEjitodWWej-_DaBRHei3Wot4nSGDtut6t89xrldZiKWiVV23QZfg1lHjFQ==",
-        "x": 620,
-        "y": 80,
+        "x": 710,
+        "y": 60,
         "wires": []
     },
     {
-        "id": "32f9873f7ee48bcd",
+        "id": "000c4615e6f9f500",
+        "type": "link in",
+        "z": "f3475de85ea09658",
+        "g": "fa719d5b8edb21f8",
+        "name": "event-resource-cycle-count",
+        "links": [
+            "9319fc3ce805a9a9"
+        ],
+        "x": 175,
+        "y": 300,
+        "wires": [
+            [
+                "7fb70ec3ca623f8e"
+            ]
+        ]
+    },
+    {
+        "id": "4e96e4d4f03a1561",
+        "type": "function",
+        "z": "f3475de85ea09658",
+        "g": "fa719d5b8edb21f8",
+        "name": "saveResourceStatus",
+        "func": "const resourceCode = msg.payload.resourceCode;\n\nmsg.payload = [\n    {\n        \"status\": 'WORKING',\n    },\n    {\n        \"resource\": resourceCode,\n    }\n];\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "a1c4894419558aaa",
+                "9fc0aed15a42eaf9"
+            ]
+        ]
+    },
+    {
+        "id": "a1c4894419558aaa",
+        "type": "influxdb out",
+        "z": "f3475de85ea09658",
+        "g": "fa719d5b8edb21f8",
+        "influxdb": "cc11d4fbaf292399",
+        "name": "INFLUX",
+        "measurement": "status",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "micromes",
+        "bucket": "micromes",
+        "x": 760,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "9fc0aed15a42eaf9",
         "type": "debug",
         "z": "f3475de85ea09658",
-        "g": "99efa440c83aba76",
+        "g": "fa719d5b8edb21f8",
         "name": "debug 12",
         "active": false,
         "tosidebar": true,
@@ -1868,8 +1948,29 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 300,
-        "y": 200,
+        "x": 760,
+        "y": 340,
         "wires": []
+    },
+    {
+        "id": "7fb70ec3ca623f8e",
+        "type": "function",
+        "z": "f3475de85ea09658",
+        "g": "fa719d5b8edb21f8",
+        "name": "verifyShould",
+        "func": "const resourceCode = msg.fields.routingKey.split('.')[1];\n\nconst value = msg.payload.value;\n\n\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "4e96e4d4f03a1561"
+            ]
+        ]
     }
 ]
